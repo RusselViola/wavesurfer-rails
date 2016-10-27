@@ -433,13 +433,14 @@ var WaveSurfer = {
     },
 
     getArrayBuffer: function (url, callback) {
-        var my = this;
 
+        var my = this;
         var ajax = WaveSurfer.util.ajax({
             url: url,
+            console.log(url);
             responseType: 'arraybuffer'
         });
-
+        console.log(ajax);
         this.currentAjax = ajax;
 
         this.tmpEvents.push(
@@ -595,7 +596,7 @@ WaveSurfer.util = {
         var fired100 = false;
 
         xhr.open(options.method || 'GET', options.url, true);
-        xhr.responseType = options.responseType || 'json';
+        xhr.responseType = options.responseType || 'jsonp';
 
         xhr.addEventListener('progress', function (e) {
             ajax.fireEvent('progress', e);
